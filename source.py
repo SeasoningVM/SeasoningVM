@@ -26,13 +26,13 @@ while True:
 
     elif instruction == OPRAND.LOAD:
         stack_index = stack[stack_pointer]
-        stack_pointer += 1
-        stack[stack_index] = stack[stack_pointer]
-        stack_pointer += 1
+        stack[stack_pointer] = stack[stack_index]
 
     elif instruction == OPRAND.STORE:
         stack_index = stack[stack_pointer]
-        stack[stack_pointer] = stack[stack_index]
+        stack_pointer += 1
+        stack[stack_index] = stack[stack_pointer]
+        stack_pointer += 1
 
     # Stack Movement:
 
