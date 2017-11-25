@@ -11,6 +11,7 @@ class OPCodes(Enum):
     DIV = auto(),  # Divides the values in the stack.
     MOD = auto(),  # Finds the remainder of a division.
     # Operations:
+    LESS = auto(),  # Determines if a value is less than another.
 
 
 
@@ -29,7 +30,9 @@ program = [
     OPCodes.PUSH, 2,
     OPCodes.DIV,  # 25
     OPCodes.PUSH, 3,
-    OPCodes.MOD,
+    OPCodes.MOD,  # 1
+    OPCodes.PUSH, 7,
+    OPCodes.LESS,  # True
     OPCodes.HALT
 ]
 
@@ -71,4 +74,8 @@ while work:
         stack_pointer += 1
         stack[stack_pointer] %= value
 
+    elif instruction == OPCodes.LESS:
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] = stack[stack_pointer] < value
 print(stack[stack_pointer])
