@@ -7,6 +7,7 @@ class Actions(Enum):
     ADD = 2,  # Add the values in the stack.
     SUB = 3,  # Minus the values in the stack.
     
+    SUB = 3,  # Subtracts the values in the stack.
 
 
 stack_pointer = 100
@@ -33,6 +34,7 @@ while work:
     elif instruction == Actions.PUSH:
         stack_pointer -= 1
         stack[stack_pointer] = program[instruction_pointer]
+        instruction_pointer += 1
 
     elif instruction == Actions.ADD:
         value = stack[stack_pointer]
