@@ -25,9 +25,8 @@ class OPCodes(Enum):
     NOT = auto()
 
 
-
 stack_pointer = 32
-stack = [0] * stack_pointer
+stack = [None] * stack_pointer
 instruction_pointer = 0
 
 program = [
