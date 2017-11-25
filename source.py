@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Actions(Enum):
+class OPCodes(Enum):
     HALT = 0,
     PUSH = 1,  # Push a value onto the stack.
     # Math:
@@ -18,18 +18,18 @@ stack = [0] * stack_pointer
 instruction_pointer = 0
 
 program = [
-    Actions.PUSH, 10,
-    Actions.PUSH, 20,
-    Actions.ADD,  # 30
-    Actions.PUSH, 5,
-    Actions.SUB,  # 25
-    Actions.PUSH, 2,
-    Actions.MUL,  # 50
-    Actions.PUSH, 2,
-    Actions.DIV,  # 25
-    Actions.PUSH, 3,
-    Actions.MOD,
-    Actions.HALT
+    OPCodes.PUSH, 10,
+    OPCodes.PUSH, 20,
+    OPCodes.ADD,  # 30
+    OPCodes.PUSH, 5,
+    OPCodes.SUB,  # 25
+    OPCodes.PUSH, 2,
+    OPCodes.MUL,  # 50
+    OPCodes.PUSH, 2,
+    OPCodes.DIV,  # 25
+    OPCodes.PUSH, 3,
+    OPCodes.MOD,
+    OPCodes.HALT
 ]
 
 work = True
@@ -37,35 +37,35 @@ while work:
     instruction = program[instruction_pointer]
     instruction_pointer += 1
 
-    if instruction == Actions.HALT:
+    if instruction == OPCodes.HALT:
         work = False
 
-    elif instruction == Actions.PUSH:
+    elif instruction == OPCodes.PUSH:
         stack_pointer -= 1
         stack[stack_pointer] = program[instruction_pointer]
         instruction_pointer += 1
 
-    elif instruction == Actions.ADD:
+    elif instruction == OPCodes.ADD:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] += value
 
-    elif instruction == Actions.SUB:
+    elif instruction == OPCodes.SUB:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] -= value
 
-    elif instruction == Actions.MUL:
+    elif instruction == OPCodes.MUL:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] *= value
 
-    elif instruction == Actions.DIV:
+    elif instruction == OPCodes.DIV:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] //= value
 
-    elif instruction == Actions.MOD:
+    elif instruction == OPCodes.MOD:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] %= value
