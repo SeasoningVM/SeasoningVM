@@ -19,7 +19,9 @@ program = [
     Actions.PUSH, 20,
     Actions.ADD,  # 30
     Actions.PUSH, 5,
-    Actions.SUB,  # -25 (5 - 30)
+    Actions.SUB,  # 25
+    Actions.PUSH, 2,
+    Actions.MUL,  # 50
     Actions.HALT
 ]
 
@@ -45,5 +47,10 @@ while work:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] -= value
+
+    elif instruction == Actions.MUL:
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] *= value
 
 print(stack[stack_pointer])
