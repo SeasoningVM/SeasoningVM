@@ -2,16 +2,18 @@ from enum import Enum, auto
 
 
 class OPCodes(Enum):
-    HALT = auto(),  # Stops the program.
-    PUSH = auto(),  # Push a value onto the stack.
+    HALT = auto()  # Stops the program.
+    # Interactions:
+    PUSH = auto()  # Pushes a value onto the stack.
     # Math:
-    ADD = auto(),  # Add the values in the stack.
-    SUB = auto(),  # Subtracts the values in the stack.
-    MUL = auto(),  # Multiplies the values in the stack.
-    DIV = auto(),  # Divides the values in the stack.
-    MOD = auto(),  # Finds the remainder of a division.
+    ADD = auto()  # Add the values in the stack.
+    SUB = auto()  # Subtracts the values in the stack.
+    MUL = auto()  # Multiplies the values in the stack.
+    DIV = auto()  # Divides the values in the stack.
+    MOD = auto()  # Finds the remainder of a division.
     # Operations:
-    LESS = auto(),  # Determines if a value is less than another.
+    LESS = auto()  # Determines if a value is less than another.
+    MORE = auto()  # Determines if a value is more than another.
 
 
 
@@ -33,6 +35,8 @@ program = [
     OPCodes.MOD,  # 1
     OPCodes.PUSH, 7,
     OPCodes.LESS,  # True
+    OPCodes.PUSH, 5,
+    OPCodes.MORE,  # False
     OPCodes.HALT
 ]
 
@@ -78,4 +82,9 @@ while work:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] = stack[stack_pointer] < value
+
+    elif instruction == OPCodes.MORE:
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] = stack[stack_pointer] > value
 print(stack[stack_pointer])
