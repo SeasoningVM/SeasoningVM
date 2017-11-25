@@ -3,8 +3,9 @@ from enum import Enum, auto
 
 class OPCodes(Enum):
     HALT = auto()  # Stops the program.
-    # Interactions:
+    # Stack Modifications:
     PUSH = auto()  # Pushes a value onto the stack.
+    POP = auto()  # Pops a value from the stack.
     # Math:
     ADD = auto()  # Add the values in the stack.
     SUB = auto()  # Subtracts the values in the stack.
@@ -15,6 +16,10 @@ class OPCodes(Enum):
     LESS = auto()  # Determines if a value is less than another.
     MORE = auto()  # Determines if a value is more than another.
     EQUAL = auto()  # Determines if a value equals another.
+    #
+    AND = auto()
+    OR = auto()
+    NOT = auto()
 
 
 
@@ -35,11 +40,12 @@ program = [
     OPCodes.PUSH, 3,
     OPCodes.MOD,  # 1
     OPCodes.PUSH, 7,
-    OPCodes.LESS,  # True
+    OPCodes.LESS,  # True/1
     OPCodes.PUSH, 5,
-    OPCodes.MORE,  # False
+    OPCodes.MORE,  # False/0
     OPCodes.PUSH, 0,
-    OPCodes.EQUAL,  # True
+    OPCodes.EQUAL,  # True/1
+    # OPCodes.POP,
     OPCodes.HALT
 ]
 
@@ -51,10 +57,14 @@ while work:
     if instruction == OPCodes.HALT:
         work = False
 
+    # Stack Modifications:
+
     elif instruction == OPCodes.PUSH:
         stack_pointer -= 1
         stack[stack_pointer] = program[instruction_pointer]
         instruction_pointer += 1
+
+    # Math:
 
     elif instruction == OPCodes.ADD:
         value = stack[stack_pointer]
@@ -81,19 +91,22 @@ while work:
         stack_pointer += 1
         stack[stack_pointer] %= value
 
+    # Operations:
+
     elif instruction == OPCodes.LESS:
         value = stack[stack_pointer]
         stack_pointer += 1
-        stack[stack_pointer] = stack[stack_pointer] < value
+        stack[stack_pointer] = int(stack[stack_pointer] < value)
 
     elif instruction == OPCodes.MORE:
         value = stack[stack_pointer]
         stack_pointer += 1
-        stack[stack_pointer] = stack[stack_pointer] > value
+        stack[stack_pointer] = int(stack[stack_pointer] > value)
 
     elif instruction == OPCodes.EQUAL:
         value = stack[stack_pointer]
         stack_pointer += 1
-        stack[stack_pointer] = stack[stack_pointer] == value
+        stack[stack_pointer] = int(stack[stack_pointer] == value)
 
+print(stack)
 print(stack[stack_pointer])
