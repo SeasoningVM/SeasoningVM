@@ -1,15 +1,16 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class OPCodes(Enum):
-    HALT = 0,
-    PUSH = 1,  # Push a value onto the stack.
+    HALT = auto(),  # Stops the program.
+    PUSH = auto(),  # Push a value onto the stack.
     # Math:
-    ADD = 2,  # Add the values in the stack.
-    SUB = 3,  # Subtracts the values in the stack.
-    MUL = 4,  # Multiplies the values in the stack.
-    DIV = 5,  # Divides the values in the stack.
-    MOD = 6,  # Finds the remainder of a division.
+    ADD = auto(),  # Add the values in the stack.
+    SUB = auto(),  # Subtracts the values in the stack.
+    MUL = auto(),  # Multiplies the values in the stack.
+    DIV = auto(),  # Divides the values in the stack.
+    MOD = auto(),  # Finds the remainder of a division.
+    # Operations:
 
 
 
