@@ -14,6 +14,7 @@ class OPCodes(Enum):
     # Operations:
     LESS = auto()  # Determines if a value is less than another.
     MORE = auto()  # Determines if a value is more than another.
+    EQUAL = auto()  # Determines if a value equals another.
 
 
 
@@ -37,6 +38,8 @@ program = [
     OPCodes.LESS,  # True
     OPCodes.PUSH, 5,
     OPCodes.MORE,  # False
+    OPCodes.PUSH, 0,
+    OPCodes.EQUAL,  # True
     OPCodes.HALT
 ]
 
@@ -87,4 +90,10 @@ while work:
         value = stack[stack_pointer]
         stack_pointer += 1
         stack[stack_pointer] = stack[stack_pointer] > value
+
+    elif instruction == OPCodes.EQUAL:
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] = stack[stack_pointer] == value
+
 print(stack[stack_pointer])
