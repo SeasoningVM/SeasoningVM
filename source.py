@@ -6,6 +6,9 @@ class OPCodes(Enum):
     # Stack Modifications:
     PUSH = auto()  # Pushes a value onto the stack.
     POP = auto()  # Pops a value from the stack.
+    # Stack Movement:
+    MOVE = auto()  # Moves a value to the stack.
+    JUMP = auto()  # Jumps to an instruction.
     # Math:
     ADD = auto()  # Add the values in the stack.
     SUB = auto()  # Subtracts the values in the stack.
@@ -23,7 +26,7 @@ class OPCodes(Enum):
 
 
 
-stack_pointer = 100
+stack_pointer = 32
 stack = [0] * stack_pointer
 instruction_pointer = 0
 
@@ -45,17 +48,17 @@ program = [
     OPCodes.MORE,  # False/0
     OPCodes.PUSH, 0,
     OPCodes.EQUAL,  # True/1
-    # OPCodes.POP,
+    # OPCodes.JUMP, 1,  # Infinite loop.
+    # OPCodes.JUMP, 28,  # Jumps to the end.
     OPCodes.HALT
 ]
 
-work = True
-while work:
-    instruction = program[instruction_pointer]
-    instruction_pointer += 1
+while True:
+    instruction = program[instruction_pointer]  # The current instruction is at the instruction pointer.
+    instruction_pointer += 1  # Increase the instruction pointer (move down the list).
 
     if instruction == OPCodes.HALT:
-        work = False
+        break
 
     # Stack Modifications:
 
@@ -63,6 +66,11 @@ while work:
         stack_pointer -= 1
         stack[stack_pointer] = program[instruction_pointer]
         instruction_pointer += 1
+
+    # Stack Movement:
+
+    elif instruction == OPCodes.JUMP:
+        instruction_pointer = program[instruction_pointer]
 
     # Math:
 
