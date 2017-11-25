@@ -53,8 +53,18 @@ program = [
     OPCodes.HALT
 ]
 
+# 5 + 10
+example_add = [
+    OPCodes.PUSH, 5,
+    OPCodes.PUSH, 10,
+    OPCodes.ADD,
+    OPCodes.HALT
+]
+
 while True:
-    instruction = program[instruction_pointer]  # The current instruction is at the instruction pointer.
+    working = example_add
+
+    instruction = working[instruction_pointer]  # The current instruction is at the instruction pointer.
     instruction_pointer += 1  # Increase the instruction pointer (move down the list).
 
     if instruction == OPCodes.HALT:
@@ -64,13 +74,13 @@ while True:
 
     elif instruction == OPCodes.PUSH:
         stack_pointer -= 1
-        stack[stack_pointer] = program[instruction_pointer]
+        stack[stack_pointer] = working[instruction_pointer]
         instruction_pointer += 1
 
     # Stack Movement:
 
     elif instruction == OPCodes.JUMP:
-        instruction_pointer = program[instruction_pointer]
+        instruction_pointer = working[instruction_pointer]
 
     # Arithmetic Operators:
 
