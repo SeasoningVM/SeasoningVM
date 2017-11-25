@@ -35,9 +35,13 @@ while work:
         stack[stack_pointer] = program[instruction_pointer]
 
     elif instruction == Actions.ADD:
-        stack[stack_pointer] += stack[stack_pointer + 1]
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] += value
 
     elif instruction == Actions.SUB:
-        stack[stack_pointer] -= stack[stack_pointer + 1]
+        value = stack[stack_pointer]
+        stack_pointer += 1
+        stack[stack_pointer] -= value
 
-print(stack)
+print(stack[stack_pointer])
