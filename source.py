@@ -32,34 +32,35 @@ stack_pointer = 32
 stack = [None] * stack_pointer
 instruction_pointer = 0
 
-program = [
-    OPRAND.PUSH, 10,  # 10
-    OPRAND.PUSH, 20,  # 20, 10
-    OPRAND.ADD,       # 20, 30
-    OPRAND.PUSH, 5,   # 5,  30
-    OPRAND.SUB,       # 5,  25
-    OPRAND.PUSH, 2,   # 2,  25
-    OPRAND.MUL,       # 2,  50
-    OPRAND.PUSH, 2,   # 2,  50
-    OPRAND.DIV,       # 2,  25
-    OPRAND.PUSH, 3,   # 3,  25
-    OPRAND.MOD,       # 3,  1
-    OPRAND.PUSH, 7,   # 7,  1
-    OPRAND.LESS,      # 7,  1
-    OPRAND.PUSH, 5,   # 5,  1
-    OPRAND.MORE,      # 5,  0
-    OPRAND.PUSH, 0,   # 0,  0
-    OPRAND.EQUAL,     # 0,  1
-    # OPRAND.JUMP, 1,  # Infinite loop.
-    # OPRAND.JUMP, 28,  # Jumps to the end.
-    OPRAND.HALT
-]
-
 # 5 + 10
 example_add = [
     OPRAND.PUSH, 5,
     OPRAND.PUSH, 10,
     OPRAND.ADD,
+    OPRAND.HALT
+]
+
+# 10 - 5
+example_sub = [
+    OPRAND.PUSH, 10,
+    OPRAND.PUSH, 5,
+    OPRAND.SUB,
+    OPRAND.HALT
+]
+
+# 5 * 10
+example_mul = [
+    OPRAND.PUSH, 5,
+    OPRAND.PUSH, 10,
+    OPRAND.MUL,
+    OPRAND.HALT
+]
+
+# 10 / 5
+example_div = [
+    OPRAND.PUSH, 10,
+    OPRAND.PUSH, 5,
+    OPRAND.DIV,
     OPRAND.HALT
 ]
 
