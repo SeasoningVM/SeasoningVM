@@ -25,5 +25,7 @@ class OPRAND(Enum):
     EQUAL = auto()  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
+    # TODO: NAND = auto()
     # TODO: OR = auto()
+    # TODO: XOR = auto()
     # TODO: NOT = auto()

@@ -45,6 +45,21 @@ example_loop = [
 
 example_store_load = [
     OPRAND.PUSH, 5,
-    OPRAND.PUSH, 5,
+    OPRAND.PUSH, 3,
+    OPRAND.STORE,
+    OPRAND.LOAD, 5,
+    OPRAND.HALT
+]
+
+# x + y * z + u
+# This should equal: 159
+# It equals: 68
+example_math = [
+    OPRAND.PUSH, 8,  # x
+    OPRAND.PUSH, 5,  # y
+    OPRAND.PUSH, 12,  # z
+    OPRAND.MUL,
+    OPRAND.ADD,
+    OPRAND.PUSH, 3,  # u
     OPRAND.HALT
 ]
