@@ -1,5 +1,4 @@
 @echo off
-setlocal EnableDelayedExpansion
 
 echo Seasoning Virtual Machine 1.0.0
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
@@ -12,7 +11,7 @@ if [%File%] == [license] goto license
 if [%File%] == [info] goto info
 if [%File%] == [exit] goto exit
 
-python -u source.py %File%
+python source.py %File%
 
 goto ask
 
