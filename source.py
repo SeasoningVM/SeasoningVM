@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
+
 from examples import *
 from opcode import OPRAND
 
@@ -85,3 +87,13 @@ while True:
 
     print(stack)
     print(stack[stack_pointer])
+
+if __name__ == "__main__":
+    program = None
+    
+    try:
+        program = sys.argv[1]
+        print(program)
+
+    except IndexError:
+        pass
