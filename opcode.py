@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from enum import Enum, auto
+from enum import Enum
+from enum import auto
 
 class OPRAND(Enum):
     HALT = auto()  # Stops the program.
