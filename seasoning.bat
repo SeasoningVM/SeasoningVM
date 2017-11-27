@@ -1,6 +1,8 @@
 @echo off
 
-echo Seasoning Virtual Machine 1.0.0
+echo Seasoning Virtual Machine [Version 1.0.0]
+echo (c) 2017, Seaoning-Virtual-Machine. BSD 3-Clause.
+echo/
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 
 :ask
