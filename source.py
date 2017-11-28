@@ -90,10 +90,7 @@ def source(program):
         print(stack[stack_pointer])
 
 if __name__ == "__main__":
-    program = """PUSH, 5,
-PUSH, 10,
-ADD,
-HALT"""
+    program = open("example.svm").read()
     type_ = "file"
     
     try:

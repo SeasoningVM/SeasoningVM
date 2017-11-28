@@ -20,6 +20,7 @@ goto ask
 
 :credits
 echo Everything: DeflatedPickle
+echo Help: assyrianic
 goto ask
 
 :license
