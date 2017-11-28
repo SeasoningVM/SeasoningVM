@@ -6,7 +6,8 @@ import sys
 from examples import *
 from opcode import OPRAND
 
-def source(program):
+
+def seasoning(source):
     stack_pointer = 32
     stack = [None] * stack_pointer
     instruction_pointer = 0
@@ -89,6 +90,7 @@ def source(program):
         print(stack)
         print(stack[stack_pointer])
 
+
 if __name__ == "__main__":
     program = example_add
     type_ = "python"
@@ -112,4 +114,4 @@ if __name__ == "__main__":
 
         program = list_
 
-    source(program)
+    seasoning(program)
