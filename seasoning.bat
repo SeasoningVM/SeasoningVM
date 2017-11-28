@@ -6,7 +6,7 @@ echo/
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 
 :ask
-set /p Type="Type >>> "
+set Type="file"
 set /p File=">>> "
 if [%File%] == [exit] goto exit
 if [%File%] == [credits] goto credits

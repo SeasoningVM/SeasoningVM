@@ -90,21 +90,20 @@ def source(program):
         print(stack[stack_pointer])
 
 if __name__ == "__main__":
-    program = open("example.svm").read()
-    type_ = "file"
+    program = example_add
+    type_ = "python"
     
     try:
         program = sys.argv[1]
-        type_ = sys.argv[1]
-        print(program)
+        type_ = sys.argv[2]
+        # print(program, type_)
 
     except IndexError:
         pass
 
-    if type_ == "python":
-        pass
+    if type_ == "file":
+        program = open("example.svm").read()
 
-    else:
         list_ = []
         program_split = program.split(",")
 
