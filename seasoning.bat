@@ -6,6 +6,7 @@ echo/
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 
 :ask
+set /p Type="Type >>> "
 set /p File=">>> "
 if [%File%] == [exit] goto exit
 if [%File%] == [credits] goto credits
@@ -13,7 +14,7 @@ if [%File%] == [license] goto license
 if [%File%] == [info] goto info
 if [%File%] == [exit] goto exit
 
-python source.py %File%
+python source.py %File% %Type%
 
 goto ask
 
