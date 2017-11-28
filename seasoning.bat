@@ -5,7 +5,6 @@ echo (c) 2017, Seaoning-Virtual-Machine. BSD 3-Clause.
 echo/
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 
-rem set Type="file"
 set Source="
 
 :ask
@@ -24,7 +23,6 @@ if exist %Insert% (
 ) else (
     rem echo This file does not exist.
 
-    rem set Type="source"
     set Source=%Source%%Insert%,
 )
 

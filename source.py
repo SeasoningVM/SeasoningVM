@@ -96,18 +96,13 @@ if __name__ == "__main__":
     try:
         program = sys.argv[1]
         type_ = sys.argv[2]
-        # print(program, type_)
 
     except IndexError:
         pass
 
-    if type_ == "python":
-        pass
-
-    else:
+    if type_ != "python":
         if type_ == "file":
             program = open(program).read()
-
 
         list_ = []
         program_split = program.split(",")
