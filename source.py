@@ -102,7 +102,7 @@ if __name__ == "__main__":
         pass
 
     if type_ == "file":
-        program = open("example.sasm").read()
+        program = open(program).read()
 
         list_ = []
         program_split = program.split(",")

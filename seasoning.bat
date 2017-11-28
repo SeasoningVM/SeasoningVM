@@ -14,7 +14,11 @@ if [%File%] == [license] goto license
 if [%File%] == [info] goto info
 if [%File%] == [exit] goto exit
 
-python source.py %File% %Type%
+if exist %File% (
+    python source.py %File% %Type%
+) else (
+    echo This file does not exist.
+)
 
 goto ask
 
