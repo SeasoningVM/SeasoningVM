@@ -101,8 +101,13 @@ if __name__ == "__main__":
     except IndexError:
         pass
 
-    if type_ == "file":
-        program = open(program).read()
+    if type_ == "python":
+        pass
+
+    else:
+        if type_ == "file":
+            program = open(program).read()
+
 
         list_ = []
         program_split = program.split(",")

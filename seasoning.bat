@@ -5,21 +5,34 @@ echo (c) 2017, Seaoning-Virtual-Machine. BSD 3-Clause.
 echo/
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 
-:ask
-set Type="file"
-set /p File=">>> "
-if [%File%] == [exit] goto exit
-if [%File%] == [credits] goto credits
-if [%File%] == [license] goto license
-if [%File%] == [info] goto info
-if [%File%] == [exit] goto exit
+rem set Type="file"
+set Source="
 
-if exist %File% (
-    python source.py %File% %Type%
+:ask
+set /p Insert=">>> "
+
+if [%Insert%] == [exit] goto exit
+if [%Insert%] == [credits] goto credits
+if [%Insert%] == [license] goto license
+if [%Insert%] == [info] goto info
+if [%Insert%] == [exit] goto exit
+
+if [%Insert%] == [end] goto end
+
+if exist %Insert% (
+    python source.py %Insert% "file"
 ) else (
-    echo This file does not exist.
+    rem echo This file does not exist.
+
+    rem set Type="source"
+    set Source=%Source%%Insert%,
 )
 
+goto ask
+
+:end
+set Source=%Source%"
+python source.py %Source% "source"
 goto ask
 
 :credits
