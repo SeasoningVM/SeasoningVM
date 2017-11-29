@@ -94,6 +94,9 @@ def seasoning(source):
 if __name__ == "__main__":
     program = example_add
     type_ = "python"
+
+    # program = "example.sasm"
+    # type_ = "file"
     
     try:
         program = sys.argv[1]
@@ -104,7 +107,15 @@ if __name__ == "__main__":
 
     if type_ != "python":
         if type_ == "file":
-            program = open(program).read()
+            program = open(program).readlines()
+
+        list_ = []
+
+        for line in program:
+            if not line.startswith(";"):
+                list_.append(line)
+
+        program = "".join(list_)
 
         list_ = []
         program_split = program.split(",")
