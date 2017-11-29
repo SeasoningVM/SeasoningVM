@@ -3,7 +3,7 @@
 
 
 def assemble(file, memory_size):
-    file.write(0xC0DE.to_bytes(2, byteorder='little'))
+    file.write(0xCAFE.to_bytes(2, byteorder='little'))
     file.write(memory_size.to_bytes(4, byteorder='little'))
 
 
