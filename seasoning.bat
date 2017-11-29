@@ -15,16 +15,17 @@ if [%Mode%] == [exit] goto exit
 if [%Mode%] == [credits] goto credits
 if [%Mode%] == [license] goto license
 if [%Mode%] == [info] goto info
+
 if [%Mode%] == [insert] echo ASM Interpreter Mode & goto interpreter
 if [%Mode%] == [file] echo ASM File Reader & goto fileReader
 goto ask
 
 :interpreter
 set /p Input=">>> "
+if [%Input%] == "" goto interpreter
+if [%Input%] == [reset] goto reset
 set Source=%Source%%Input%,
-if [%Input%] == [HALT] goto end
-if "%Input%" == "EOF" goto exit
-if "%Input%" == "" goto interpreter
+if [%Input%] == [HALT] goto halt
 goto interpreter
 
 :filereader
@@ -35,7 +36,11 @@ if exist %File% (
 )
 goto filereader
 
-:end
+:reset
+set Source="
+goto interpreter
+
+:halt
 set Source=%Source%"
 python source.py %Source% "source"
 goto ask
