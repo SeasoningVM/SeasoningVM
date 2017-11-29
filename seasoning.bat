@@ -32,9 +32,14 @@ goto interpreter
 :filereader
 set /p File=">>> "
 if [%File%] == [exit] goto exit
-if "%File%" == "" echo No file entered! & goto filereader
+if "%File%" == "" (
+    echo No file entered.
+    goto filereader
+)
 if exist %File% (
     python source.py %File% "file"
+) else (
+    echo This file does not exist.
 )
 goto filereader
 
