@@ -6,7 +6,7 @@ echo.
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 echo Type "file" to enter file reader mode or enter "insert" to enter an ASM interpreter mode
 
-set Source=""
+set Source="
 
 :ask
 set /p Mode=">>> "
@@ -15,17 +15,16 @@ if [%Mode%] == [exit] goto exit
 if [%Mode%] == [credits] goto credits
 if [%Mode%] == [license] goto license
 if [%Mode%] == [info] goto info
-if [%Mode%] == [end] goto end
 if [%Mode%] == [insert] echo ASM Interpreter Mode & goto interpreter
 if [%Mode%] == [file] echo ASM File Reader & goto fileReader
 goto ask
 
 :interpreter
 set /p Input=">>> "
+set Source=%Source%%Input%,
+if [%Input%] == [HALT] goto end
 if "%Input%" == "EOF" goto exit
 if "%Input%" == "" goto interpreter
-python source.py %Input% "source"
-set Input=""
 goto interpreter
 
 :filereader
@@ -33,9 +32,6 @@ set /p File=">>> "
 if "%File%" == "" echo No file entered! & goto filereader
 if exist %File% (
     python source.py %File% "file"
-) else (
-    rem echo This file does not exist.
-    set Source=%Source%%File%,
 )
 goto filereader
 
@@ -45,8 +41,7 @@ python source.py %Source% "source"
 goto ask
 
 :credits
-echo Everything: DeflatedPickle
-echo Help: assyrianic
+echo DeflatedPickle, assyrianic, Dew Wisp
 goto ask
 
 :license
