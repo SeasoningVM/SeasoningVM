@@ -6,6 +6,7 @@ echo.
 echo Type "credits", "license" or "info" for more information. Type "exit" to leave.
 echo Type "file" to enter file reader mode or enter "insert" to enter an ASM interpreter mode
 
+:main
 set Source="
 
 :ask
@@ -16,22 +17,33 @@ if [%Mode%] == [credits] goto credits
 if [%Mode%] == [license] goto license
 if [%Mode%] == [info] goto info
 
-if [%Mode%] == [insert] echo ASM Interpreter Mode & goto interpreter
-if [%Mode%] == [file] echo ASM File Reader & goto fileReader
+if [%Mode%] == [insert] (
+    echo ASM Interpreter Mode. Type "leave" to go to main.
+    goto interpreter
+)
+if [%Mode%] == [file] (
+    echo ASM File Reader. Type "leave" to go to main.
+    goto fileReader
+)
 goto ask
 
 :interpreter
-set /p Input=">>> "
+set /p Input="ASM >>> "
 if [%Input%] == [exit] goto exit
-if [%Input%] == "" goto interpreter
 if [%Input%] == [reset] goto reset
+if [%Input%] == [leave] goto main
+
+if [%Input%] == "" goto interpreter
+
 set Source=%Source%%Input%,
 if [%Input%] == [HALT] goto halt
 goto interpreter
 
 :filereader
-set /p File=">>> "
+set /p File="File >>> "
 if [%File%] == [exit] goto exit
+if [%File%] == [leave] goto main
+
 if "%File%" == "" (
     echo No file entered.
     goto filereader
