@@ -22,6 +22,7 @@ goto ask
 
 :interpreter
 set /p Input=">>> "
+if [%Input%] == [exit] goto exit
 if [%Input%] == "" goto interpreter
 if [%Input%] == [reset] goto reset
 set Source=%Source%%Input%,
@@ -30,6 +31,7 @@ goto interpreter
 
 :filereader
 set /p File=">>> "
+if [%File%] == [exit] goto exit
 if "%File%" == "" echo No file entered! & goto filereader
 if exist %File% (
     python source.py %File% "file"
