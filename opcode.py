@@ -1,30 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from enum import Enum
-from enum import auto
+from enum import IntEnum
+from enum import unique
 
 
-class OPRAND(Enum):
-    HALT = auto()  # Stops the program.
+@unique
+class OPRAND(IntEnum):
+    HALT = 0  # Stops the program.
     # Stack Modifications:
-    PUSH = auto()  # Pushes a value onto the stack.
+    PUSH = 1  # Pushes a value onto the stack.
     # TODO: POP = auto()  # Pops a value from the stack.
     # TODO: MOVE = auto()  # Moves a value to the stack.
-    LOAD = auto()  # Loads a value from the stack.
-    STORE = ()  # Stores a value in the stack.
+    LOAD = 2  # Loads a value from the stack.
+    STORE = 3  # Stores a value in the stack.
     # Stack Movement:
-    JUMP = auto()  # Jumps to an instruction.
+    JUMP = 4  # Jumps to an instruction.
     # Arithmetic Operators:
-    ADD = auto()  # Add the values in the stack.
-    SUB = auto()  # Subtracts the values in the stack.
-    MUL = auto()  # Multiplies the values in the stack.
-    DIV = auto()  # Divides the values in the stack.
-    MOD = auto()  # Finds the remainder of a division.
+    ADD = 5  # Add the values in the stack.
+    SUB = 6  # Subtracts the values in the stack.
+    MUL = 7  # Multiplies the values in the stack.
+    DIV = 8  # Divides the values in the stack.
+    MOD = 9  # Finds the remainder of a division.
     # Comparison Operators:
-    LESS = auto()  # Determines if a value is less than another.
-    MORE = auto()  # Determines if a value is more than another.
-    EQUAL = auto()  # Determines if a value equals another.
+    LESS = 10  # Determines if a value is less than another.
+    MORE = 11  # Determines if a value is more than another.
+    EQUAL = 12  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
     # TODO: NAND = auto()
