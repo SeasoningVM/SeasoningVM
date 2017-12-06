@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import binascii
+import codecs
 
 from examples import *
 from opcode import OPRAND
@@ -92,11 +94,14 @@ def seasoning(source):
 
 
 if __name__ == "__main__":
-    program = example_add
-    type_ = "python"
+    # program = example_add
+    # type_ = "python"
 
     # program = "example.sasm"
     # type_ = "file"
+
+    program = "example.sbc"
+    type_ = "bytecode"
     
     try:
         program = sys.argv[1]
@@ -108,6 +113,11 @@ if __name__ == "__main__":
     if type_ != "python":
         if type_ == "file":
             program = open(program).readlines()
+
+        elif type_ == "bytecode":
+            # program = bytes(open(program).readlines()).decode("utf-8")
+            program = open(program, "rb").read()
+            print(program)
 
         list_ = []
 

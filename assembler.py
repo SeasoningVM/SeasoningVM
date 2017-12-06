@@ -29,4 +29,4 @@ if __name__ == "__main__":
                     for rest in lines[1:]:
                         bytecode.write(bytes([int(rest)]))
 
-                    print(lines)
+                    # print(lines)
