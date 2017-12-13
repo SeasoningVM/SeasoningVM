@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import binascii
-import codecs
 
 from examples import *
 from opcode import OPRAND
@@ -15,7 +13,7 @@ def seasoning(source):
     instruction_pointer = 0
 
     while True:
-        working = program
+        working = source
 
         instruction = working[instruction_pointer]  # The current instruction is at the instruction pointer.
         instruction_pointer += 1  # Increase the instruction pointer (move down the list).
@@ -97,11 +95,13 @@ if __name__ == "__main__":
     # program = example_add
     # type_ = "python"
 
-    # program = "example.sasm"
-    # type_ = "file"
+    program = "example.sasm"
+    type_ = "file"
 
-    program = "example.sbc"
-    type_ = "bytecode"
+    memory = [0x00] * (2 ** 8)
+
+    # program = "example.sbc"
+    # type_ = "bytecode"
     
     try:
         program = sys.argv[1]
@@ -114,10 +114,10 @@ if __name__ == "__main__":
         if type_ == "file":
             program = open(program).readlines()
 
-        elif type_ == "bytecode":
-            # program = bytes(open(program).readlines()).decode("utf-8")
-            program = open(program, "rb").read()
-            print(program)
+        # elif type_ == "bytecode":
+        #     # program = bytes(open(program).readlines()).decode("utf-8")
+        #     program = open(program, "rb").read()
+        #     print(program)
 
         list_ = []
 
