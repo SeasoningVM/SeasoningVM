@@ -21,6 +21,9 @@ def seasoning(source):
         if instruction in [OPRAND.HALT, "HALT"]:
             break
 
+        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 0x10,
+            pass
+
         # Stack Modifications:
 
         elif instruction in [OPRAND.PUSH, "PUSH"]:
@@ -37,9 +40,6 @@ def seasoning(source):
             stack_pointer += 1
             stack[stack_index] = stack[stack_pointer]
             stack_pointer += 1
-
-        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 0x10,
-            pass
 
         # Stack Movement:
 

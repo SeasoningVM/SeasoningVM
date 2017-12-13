@@ -17,6 +17,8 @@ class OPRAND(IntEnum):
     STORE = 3  # Stores a value in the stack.
     # Stack Movement:
     JUMP = 4  # Jumps to an instruction.
+    JUMPLESS = 14  # Jump if less-than.
+    JUMPMORE = 15  # Jump if more-than.
     # Arithmetic Operators:
     ADD = 5  # Add the values in the stack.
     SUB = 6  # Subtracts the values in the stack.
@@ -24,9 +26,10 @@ class OPRAND(IntEnum):
     DIV = 8  # Divides the values in the stack.
     MOD = 9  # Finds the remainder of a division.
     # Comparison Operators:
-    LESS = 10  # Determines if a value is less than another.
-    MORE = 11  # Determines if a value is more than another.
-    EQUAL = 12  # Determines if a value equals another.
+    COMPARE = 16  # Compares two values.
+    # LESS = 10  # Determines if a value is less than another.
+    # MORE = 11  # Determines if a value is more than another.
+    # EQUAL = 12  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
     # TODO: NAND = auto()
