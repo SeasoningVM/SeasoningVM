@@ -38,6 +38,9 @@ def seasoning(source):
             stack[stack_index] = stack[stack_pointer]
             stack_pointer += 1
 
+        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 0x10,
+            pass
+
         # Stack Movement:
 
         elif instruction in [OPRAND.JUMP, "JUMP"]:

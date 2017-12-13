@@ -8,6 +8,7 @@ from enum import unique
 @unique
 class OPRAND(IntEnum):
     HALT = 0  # Stops the program.
+    MOVE = 13  # Moves a value into a memory slot.
     # Stack Modifications:
     PUSH = 1  # Pushes a value onto the stack.
     # TODO: POP = auto()  # Pops a value from the stack.
