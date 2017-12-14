@@ -97,6 +97,14 @@ def seasoning(source, RAM: list):
             stack_pointer += 1
             stack[stack_pointer] = int(stack[stack_pointer] == value)
 
+        # IO:
+
+        elif instruction in [OPRAND.IN, "IN"]:
+            in_ = input()
+
+        elif instruction in [OPRAND.OUT, "OUT"]:
+            print(working[instruction_pointer])
+
         print(stack)
         print(stack[stack_pointer])
         print(RAM)

@@ -28,12 +28,15 @@ class OPRAND(IntEnum):
     MOD = 9  # Finds the remainder of a division.
     # Comparison Operators:
     COMPARE = 16  # Compares two values.
-    # LESS = 10  # Determines if a value is less than another.
-    # MORE = 11  # Determines if a value is more than another.
-    # EQUAL = 12  # Determines if a value equals another.
+    LESS = 10  # Determines if a value is less than another.
+    MORE = 11  # Determines if a value is more than another.
+    EQUAL = 12  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
     # TODO: NAND = auto()
     # TODO: OR = auto()
     # TODO: XOR = auto()
     # TODO: NOT = auto()
+    # IO:
+    IN = 17
+    OUT = 18
