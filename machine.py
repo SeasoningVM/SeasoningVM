@@ -7,7 +7,7 @@ from examples import *
 from opcode import OPRAND
 
 
-def seasoning(source):
+def seasoning(source, RAM: list):
     stack_pointer = 32
     stack = [None] * stack_pointer
     instruction_pointer = 0
@@ -21,8 +21,13 @@ def seasoning(source):
         if instruction in [OPRAND.HALT, "HALT"]:
             break
 
-        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 0x10,
-            pass
+        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 10,
+            move = int(working[instruction_pointer])
+            instruction_pointer += 1
+            to = int(working[instruction_pointer])
+            instruction_pointer += 1
+
+            RAM[to] = move
 
         # Stack Modifications:
 
@@ -92,6 +97,7 @@ def seasoning(source):
 
         print(stack)
         print(stack[stack_pointer])
+        print(RAM)
 
 
 if __name__ == "__main__":
@@ -138,4 +144,4 @@ if __name__ == "__main__":
 
         program = list_
 
-    seasoning(program)
+    seasoning(program, memory)
