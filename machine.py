@@ -21,6 +21,15 @@ def seasoning(source, RAM: list):
         if instruction in [OPRAND.HALT, "HALT"]:
             break
 
+        # Stack Modifications:
+
+        elif instruction in [OPRAND.PUSH, "PUSH"]:
+            stack_pointer -= 1
+            stack[stack_pointer] = int(working[instruction_pointer])
+            instruction_pointer += 1
+
+        # Memory Modifications:
+
         elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 10,
             move = int(working[instruction_pointer])
             instruction_pointer += 1
@@ -28,13 +37,6 @@ def seasoning(source, RAM: list):
             instruction_pointer += 1
 
             RAM[to] = move
-
-        # Stack Modifications:
-
-        elif instruction in [OPRAND.PUSH, "PUSH"]:
-            stack_pointer -= 1
-            stack[stack_pointer] = int(working[instruction_pointer])
-            instruction_pointer += 1
 
         elif instruction in [OPRAND.LOAD, "LOAD"]:
             stack_index = stack[stack_pointer]
@@ -104,13 +106,13 @@ if __name__ == "__main__":
     # program = example_add
     # type_ = "python"
 
-    program = "example.sasm"
-    type_ = "file"
+    # program = "example.sasm"
+    # type_ = "file"
+
+    program = "example.sbc"
+    type_ = "bytecode"
 
     memory = [0x00] * (2 ** 8)
-
-    # program = "example.sbc"
-    # type_ = "bytecode"
     
     try:
         program = sys.argv[1]
@@ -123,25 +125,25 @@ if __name__ == "__main__":
         if type_ == "file":
             program = open(program).readlines()
 
-        # elif type_ == "bytecode":
-        #     # program = bytes(open(program).readlines()).decode("utf-8")
-        #     program = open(program, "rb").read()
-        #     print(program)
+        elif type_ == "bytecode":
+            program = open(program, "rb").read()
+            # print(program)
 
-        list_ = []
+        if type_ != "bytecode":
+            list_ = []
 
-        for line in program:
-            if not line.startswith(";"):
-                list_.append(line)
+            for line in program:
+                if not line.startswith(";"):
+                    list_.append(line)
 
-        program = "".join(list_)
+            program = "".join(list_)
 
-        list_ = []
-        program_split = program.split(",")
+            list_ = []
+            program_split = program.split(",")
 
-        for code in program_split:
-            list_.append("".join(code.split()))
+            for code in program_split:
+                list_.append("".join(code.split()))
 
-        program = list_
+            program = list_
 
     seasoning(program, memory)
