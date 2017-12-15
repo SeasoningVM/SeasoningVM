@@ -3,11 +3,11 @@
 
 import sys
 
-from examples import *
+# from examples import *
 from opcode import OPRAND
 
 
-def seasoning(source, RAM: list):
+def seasoning(source, ram: list):
     stack_pointer = 32
     stack = [None] * stack_pointer
     instruction_pointer = 0
@@ -36,7 +36,7 @@ def seasoning(source, RAM: list):
             to = int(working[instruction_pointer])
             instruction_pointer += 1
 
-            RAM[to] = move
+            ram[to] = move
 
         elif instruction in [OPRAND.LOAD, "LOAD"]:
             stack_index = stack[stack_pointer]
@@ -114,7 +114,7 @@ def seasoning(source, RAM: list):
 
         print(stack)
         print(stack[stack_pointer])
-        print(RAM)
+        print(ram)
 
 
 if __name__ == "__main__":
@@ -122,6 +122,7 @@ if __name__ == "__main__":
     # type_ = "python"
 
     program = "example.sasm"
+    # program = "temp.sasm"
     type_ = "file"
 
     # program = "example.sbc"
