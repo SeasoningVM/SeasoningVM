@@ -100,10 +100,17 @@ def seasoning(source, RAM: list):
         # IO:
 
         elif instruction in [OPRAND.IN, "IN"]:
-            in_ = input()
+            buffer = b""
+            if len(buffer) < 1:
+                buffer += bytes(input(), "utf-8")
+            stack.append(buffer[0])
+            buffer = buffer[1:]
 
         elif instruction in [OPRAND.OUT, "OUT"]:
             print(working[instruction_pointer])
+
+        else:
+            print("'{}' is not a valid OPCODE.".format(instruction))
 
         print(stack)
         print(stack[stack_pointer])
@@ -114,11 +121,11 @@ if __name__ == "__main__":
     # program = example_add
     # type_ = "python"
 
-    # program = "example.sasm"
-    # type_ = "file"
+    program = "example.sasm"
+    type_ = "file"
 
-    program = "example.sbc"
-    type_ = "bytecode"
+    # program = "example.sbc"
+    # type_ = "bytecode"
 
     memory = [0x00] * (2 ** 8)
     
