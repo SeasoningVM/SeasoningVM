@@ -15,13 +15,7 @@ class OPRAND(IntEnum):
     # Memory Modification:
     MOVE = 13  # Moves a value into a memory slot.
     LOAD = 2  # Loads a value from the stack.
-    STORE = 3  # Stores a value in the stack.
-    # Stack Movement:
-    JUMP = 4  # Jumps to an instruction.
-    JUMPLESS = 14  # Jump if less-than.
-    JUMPMORE = 15  # Jump if more-than.
-    # Arithmetic Operators:
-    ADD = 5  # Add the values in the stack.
+    STORE = 3  # Stores a value in the stack.tack.
     SUB = 6  # Subtracts the values in the stack.
     MUL = 7  # Multiplies the values in the stack.
     DIV = 8  # Divides the values in the stack.
@@ -33,6 +27,13 @@ class OPRAND(IntEnum):
     EQUAL = 12  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
+    # Stack Movement:
+    JUMP = 4  # Jumps to an instruction.
+    JUMPLESS = 14  # Jump if less-than.
+    JUMPMORE = 15  # Jump if more-than.
+    JUMPREL = 19  # Jumps relatively to the current instruction.
+    # Arithmetic Operators:
+    ADD = 5  # Add the values in the s
     # TODO: NAND = auto()
     # TODO: OR = auto()
     # TODO: XOR = auto()
