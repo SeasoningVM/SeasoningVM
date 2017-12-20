@@ -6,12 +6,11 @@ from enum import unique
 
 
 @unique
-class OPRAND(IntEnum):
+class OPCODE(IntEnum):
     HALT = 0  # Stops the program.
     # Stack Modifications:
     PUSH = 1  # Pushes a value onto the stack.
     # TODO: POP = auto()  # Pops a value from the stack.
-    # TODO: MOVE = auto()  # Moves a value to the stack.
     # Memory Modification:
     MOVE = 13  # Moves a value into a memory slot.
     LOAD = 2  # Loads a value from the stack.
@@ -30,7 +29,9 @@ class OPRAND(IntEnum):
     # Stack Movement:
     JUMP = 4  # Jumps to an instruction.
     JUMPLESS = 14  # Jump if less-than.
+    JUMPLESSEQUAL = 23
     JUMPMORE = 15  # Jump if more-than.
+    JUMPMOREEQUAL = 24
     JUMPREL = 19  # Jumps relatively to the current instruction.
     # Arithmetic Operators:
     ADD = 5  # Add the values in the s

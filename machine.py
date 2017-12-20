@@ -4,7 +4,7 @@
 import sys
 
 # from examples import *
-from opcode import OPRAND
+from opcode import OPCODE
 
 
 def seasoning(source, ram: list):
@@ -18,19 +18,19 @@ def seasoning(source, ram: list):
         instruction = working[instruction_pointer]  # The current instruction is at the instruction pointer.
         instruction_pointer += 1  # Increase the instruction pointer (move down the list).
 
-        if instruction in [OPRAND.HALT, "HALT"]:
+        if instruction in [OPCODE.HALT, "HALT"]:
             break
 
         # Stack Modifications:
 
-        elif instruction in [OPRAND.PUSH, "PUSH"]:
+        elif instruction in [OPCODE.PUSH, "PUSH"]:
             stack_pointer -= 1
             stack[stack_pointer] = int(working[instruction_pointer])
             instruction_pointer += 1
 
         # Memory Modifications:
 
-        elif instruction in [OPRAND.MOVE, "MOVE"]:  # MOVE, 5, 10,
+        elif instruction in [OPCODE.MOVE, "MOVE"]:  # MOVE, 5, 10,
             move = int(working[instruction_pointer])
             instruction_pointer += 1
             to = int(working[instruction_pointer])
@@ -38,11 +38,11 @@ def seasoning(source, ram: list):
 
             ram[to] = move
 
-        elif instruction in [OPRAND.LOAD, "LOAD"]:
+        elif instruction in [OPCODE.LOAD, "LOAD"]:
             stack_index = stack[stack_pointer]
             stack[stack_pointer] = stack[stack_index]
 
-        elif instruction in [OPRAND.STORE, "STORE"]:
+        elif instruction in [OPCODE.STORE, "STORE"]:
             stack_index = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_index] = stack[stack_pointer]
@@ -50,63 +50,63 @@ def seasoning(source, ram: list):
 
         # Stack Movement:
 
-        elif instruction in [OPRAND.JUMP, "JUMP"]:
+        elif instruction in [OPCODE.JUMP, "JUMP"]:
             instruction_pointer = working[instruction_pointer]
 
         # Arithmetic Operators:
 
-        elif instruction in [OPRAND.ADD, "ADD"]:
+        elif instruction in [OPCODE.ADD, "ADD"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] += value
 
-        elif instruction in [OPRAND.SUB, "SUB"]:
+        elif instruction in [OPCODE.SUB, "SUB"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] -= value
 
-        elif instruction in [OPRAND.MUL, "MUL"]:
+        elif instruction in [OPCODE.MUL, "MUL"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] *= value
 
-        elif instruction in [OPRAND.DIV, "DIV"]:
+        elif instruction in [OPCODE.DIV, "DIV"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] //= value
 
-        elif instruction in [OPRAND.MOD, "MOD"]:
+        elif instruction in [OPCODE.MOD, "MOD"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] %= value
 
         # Comparison Operations:
 
-        elif instruction in [OPRAND.LESS, "LESS"]:
+        elif instruction in [OPCODE.LESS, "LESS"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] = int(stack[stack_pointer] < value)
 
-        elif instruction in [OPRAND.MORE, "MORE"]:
+        elif instruction in [OPCODE.MORE, "MORE"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] = int(stack[stack_pointer] > value)
 
-        elif instruction in [OPRAND.EQUAL, "EQUAL"]:
+        elif instruction in [OPCODE.EQUAL, "EQUAL"]:
             value = stack[stack_pointer]
             stack_pointer += 1
             stack[stack_pointer] = int(stack[stack_pointer] == value)
 
         # IO:
 
-        elif instruction in [OPRAND.IN, "IN"]:
+        elif instruction in [OPCODE.IN, "IN"]:
             buffer = b""
             if len(buffer) < 1:
                 buffer += bytes(input(), "utf-8")
             stack.append(buffer[0])
             buffer = buffer[1:]
 
-        elif instruction in [OPRAND.OUT, "OUT"]:
+        elif instruction in [OPCODE.OUT, "OUT"]:
             print(working[instruction_pointer])
 
         else:
