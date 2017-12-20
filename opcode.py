@@ -41,3 +41,7 @@ class OPRAND(IntEnum):
     # IO:
     IN = 17
     OUT = 18
+    # Imports:
+    IMPORTFILE = 20  # Imports a file in the location specified.
+    IMPORTLIB = 21  # Imports a library from the location specified.
+    IMPORTSTDLIB = 22  # Importa a standard library.
