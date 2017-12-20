@@ -28,18 +28,17 @@ class OPCODE(IntEnum):
     EQUAL = 12  # Determines if a value equals another.
     # Logical Operators:
     # TODO: AND = auto()
-    # Stack Movement:
+    # TODO: NAND = auto()
+    # TODO: OR = auto()
+    # TODO: XOR = auto()
+    # TODO: NOT = auto()
+    # Instruction Movement:
     JUMP = 4  # Jumps to an instruction.
     JUMPLESS = 14  # Jump if less-than.
     JUMPLESSEQUAL = 23  # Jump if less-than or equal.
     JUMPMORE = 15  # Jump if more-than.
     JUMPMOREEQUAL = 24  # Jump if more-than or equal.
-
     JUMPREL = 19  # Jumps relatively to the current instruction.
-    # TODO: NAND = auto()
-    # TODO: OR = auto()
-    # TODO: XOR = auto()
-    # TODO: NOT = auto()
     # IO:
     IN = 17
     OUT = 18
